@@ -1,57 +1,484 @@
-%p#notice= notice
-
-%p
-  %b Company name:
-  = @company.company_name
-%p
-  %b Adress:
-  = @company.address
-%p
-  %b Title:
-  = @company.title
-%p
-  %b Description:
-  = @company.description
-%p
-  %b Longitude:
-  = @company.longitude
-%p
-  %b Latitude:
-  = @company.latitude
-%p
-  %b Homepage url:
-  = @company.homepage_url
-%p
-  %b Established at:
-  = @company.established_at
-%p
-  %b Number of members:
-  = @company.number_of_members
-%p
-  %b Mail:
-  = @company.mail
-%p
-  %b Twitter:
-  = @company.twitter
-%p
-  %b Slideshare:
-  = @company.slideshare
-%p
-  %b Vine:
-  = @company.vine
-%p
-  %b Youtube:
-  = @company.youtube
-%p
-  %b Logo:
-  = @company.logo
-%p
-  %b Cover:
-  = @company.cover
-%p
-  %b Phone:
-  = @company.phone
-
-= link_to 'Edit', edit_company_path(@company)
-\|
-= link_to 'Back', companies_path
+!!!
+%html{xmlns: "http://www.w3.org/1999/xhtml"}
+  %head
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title シラバス
+    %link{href: "fav.png", rel: "shortcut icon"}/
+  %body
+    #wrapper
+      #header
+        .header-top
+          .container.content
+            %span.sub-title 求人情報とセットのプログラミング学習サイト
+            %span.header-top-right
+              %a{href: ""}
+                %i.icon-lightbulb>
+                使い方
+              %a{href: ""}
+                %i.icon-question>
+                ヘルプ
+        .header.container.content
+          %p.title
+            %a{href: "/companies"}
+              = image_tag "cy_logo.png"
+            %span.summary
+              %a{href: "/companies"}
+                %i.icon-building>
+                企業一覧
+              %a{href: ""}
+                %i.icon-list>
+                シラバス一覧
+              %a{href: "#{@company.id}/edit"}
+                %i.icon-pencil>
+                編集する
+          .recruitment-staff
+            %i.icon-user
+            %a{href: ""}
+              採用担当者の方
+          .signup
+            %a.signup-btn{href: "https://docs.google.com/a/daraf.co.jp/forms/d/1lMjIzxXjQUj0xKsphSFXd_770gtjxeC9ACoMNAXBs2A/viewform", target: "_blank"}
+              %i.icon-user>
+              会員登録(無料)
+      #main-content
+        .container.content
+          .pankuzu
+            %a{href: ""} トップ
+            %span.dainari >
+            %a.active 株式会社ダラフ
+          .office-ex
+            .company-name
+              .logo
+                = image_tag @company.logo.to_s
+              .name
+                %p.bold= @company.company_name
+                %p.url
+                  %a{href: "http://#{@company.homepage_url}", target: "_blank"} http://daraf.co.jp
+            .establishment
+              %p.bold 設立日
+              %p= @company.established_at
+            .employees
+              %p.bold 従業員数
+              %p= @company.number_of_members
+            .contact-icon
+              %a
+                = image_tag "nophone.png"
+              %a#contact-tool{"data-original-title" => @company.mail, "data-placement" => "top", "data-toggle" => "tooltip", href: "mailto:#{@company.mail}", rel: "tooltip"}
+                = image_tag "mail.png"
+              %a#contact-tool{"data-original-title" => "/cyllabus", "data-placement" => "top", "data-toggle" => "tooltip", href: "https://facebook.com/cyllabus", rel: "tooltip", target: "_blank"}
+                = image_tag "facebook.png"
+              = render "twitter"
+            .clear
+          .office-image
+            = image_tag @company.cover.to_s
+          .row
+            .span9
+              .curriculum
+                .title-head
+                  %h4 学習カリキュラム&求人情報一覧
+                .curriculum-box
+                  %a{href: "syllabus.html", target: "_blank"}
+                    .box-left
+                      %h4 株式会社ダラフ Ruby on Rails プログラマー
+                      .situation
+                        %span.recruiment 募集中
+                        %span.officehour オフィスアワーあり
+                        %span.menter メンターあり
+                      .category
+                        カテゴリー
+                        %span.category-link Git
+                        %span.category-link Ruby
+                        %span.category-link Rails
+                        %span.category-link JavaScript
+                        %span.category-link CoffeeScript
+                    .box-right
+                      = image_tag "rubyonrails.png"
+                    .clear
+              .tool
+                .title-head
+                  %h4 使用ツール
+                %div
+                  %p.blog
+                    技術ブログ:
+                    %a{href: "http://tech.daraf.co.jp", target: "_blank"}
+                      http://tech.daraf.co.jp
+                  %table.table.table-bordered
+                    %tbody
+                      %tr
+                        %td.table-title サーバーフレームワーク
+                        %td Ruby on Rails
+                      %tr
+                        %td ブラウザフレームワーク
+                        %td Backbone.js
+                      %tr
+                        %td プラットフォーム
+                        %td Windows Azure
+                      %tr
+                        %td OS
+                        %td Cent OS 6.4
+                      %tr
+                        %td ウェブサーバー
+                        %td Nginx(+ unicorn)
+                      %tr
+                        %td データベース
+                        %td MySQL
+                      %tr
+                        %td アクセス解析
+                        %td Google Analytics
+                      %tr
+                        %td パフォーマンス監視
+                        %td NewRelic
+                      %tr
+                        %td バージョン管理
+                        %td Git, Github
+                      %tr
+                        %td CI
+                        %td Jenkins
+                      %tr
+                        %td タスク管理
+                        %td Basecamp
+                      %tr
+                        %td チャット
+                        %td Line, Facebookグループ, Hipchat
+              .member
+                .title-head
+                  %h4 社員紹介
+                .member-content
+                  .member-box{align: "center"}
+                    = image_tag "saiwaki.png"
+                    .post-name
+                      %span.post 代表
+                      %br/
+                      %span.name 斉脇 一志
+                  .member-box{align: "center"}
+                    = image_tag "ohata.png"
+                    .post-name
+                      %span.post 技術責任者
+                      %br/
+                      %span.name 大畠 健
+                  .member-box{align: "center"}
+                    = image_tag "keito.png"
+                    .post-name
+                      %span.post デザイン責任者
+                      %br/
+                      %span.name 寺西 勁人
+                  .member-box{align: "center"}
+                    = image_tag "kazuki.png"
+                    .post-name
+                      %span.post プログラマー
+                      %br/
+                      %span.name 高橋 一貴
+                  .member-box{align: "center"}
+                    = image_tag "taneichi.png"
+                    .post-name
+                      %span.post プログラマー
+                      %br/
+                      %span.name 種市 隼兵
+                  .member-box{align: "center"}
+                    = image_tag "soya.png"
+                    .post-name
+                      %span.post 営業責任者
+                      %br/
+                      %span.name 征矢 直記
+                  .member-box{align: "center"}
+                    = image_tag "nobu.png"
+                    .post-name
+                      %span.post 営業
+                      %br/
+                      %span.name 髙橋 信行
+              .business
+                .title-head
+                  %h4 事業内容
+                #myCarousel.carousel.slide
+                  %ol.carousel-indicators
+                    %li.active{"data-slide-to" => "0", "data-target" => "#myCarousel"}
+                    %li{"data-slide-to" => "1", "data-target" => "#myCarousel"}
+                  / Carousel items
+                  .carousel-inner
+                    .active.item
+                      .slideshare{align: "center"}
+                        = render "slideshare"
+                    .item
+                      .slideshare{align: "center"}
+                        = render "youtube"
+                  / Carousel nav
+                  %a.carousel-control.left{"data-slide" => "prev", href: "#myCarousel"} ‹
+                  %a.carousel-control.right{"data-slide" => "next", href: "#myCarousel"} ›
+              .location
+                .title-head
+                  %h4 勤務地
+                %p.address
+                  = @company.address
+                //= gmaps4rails(@json)
+            .span3
+              .vine
+                .title-head
+                  %h4 Vine
+                .vine-content{align: "center"}
+                  = render "vine"
+              .facebook-album
+                .title-head
+                  %h4 Facebookアルバム
+                .facebook-album-content{align: "center"}
+                  %a{"data-toggle" => "modal", href: "#myModal1", role: "button"}
+                    = image_tag "album/album1.jpg"
+                  %a{"data-toggle" => "modal", href: "#myModal2", role: "button"}
+                    = image_tag "album/album2.jpg"
+                  %a{"data-toggle" => "modal", href: "#myModal3", role: "button"}
+                    = image_tag "album/album3.jpg"
+                  %a{"data-toggle" => "modal", href: "#myModal4", role: "button"}
+                    = image_tag "album/album4.jpg"
+                  %a{"data-toggle" => "modal", href: "#myModal5", role: "button"}
+                    = image_tag "album/album5.jpg"
+                  %a{"data-toggle" => "modal", href: "#myModal6", role: "button"}
+                    = image_tag "album/album6.jpg"
+                  %a{"data-toggle" => "modal", href: "#myModal7", role: "button"}= image_tag "album/album7.jpg"
+                  %a{"data-toggle" => "modal", href: "#myModal8", role: "button"}= image_tag "album/album8.jpg"
+                  %a{"data-toggle" => "modal", href: "#myModal9", role: "button"}= image_tag "album/album9.jpg"
+                  %a{"data-toggle" => "modal", href: "#myModal10", role: "button"}= image_tag "album/album10.jpg"
+      #footer
+        .container.content
+          .footer-content
+            .footer-link
+              %a{href: ""} 使い方
+            .footer-link
+              %a{href: ""} ヘルプ
+          .footer-content
+            .footer-link
+              %a{href: ""} ブログ
+            .footer-link
+              %a{href: ""} Facebook
+            .footer-link
+              %a{href: ""} Twitter
+          .footer-content
+            .footer-link
+              %a{href: ""} 運営会社
+            .footer-link
+              %a{href: ""} 利用規約
+            .footer-link
+              %a{href: ""} プライバシーポリシー
+          .footer-content
+            .footer-link
+              %a{href: ""} お問い合わせ
+          .copyright{align: "center"}
+            Copyright © 2013 シラバス All rights reserved.
+    / Modal
+    #myModal1.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
+      .modal-header
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
+        %h4#myModalLabel Facebookアルバム
+      .modal-body
+        #myCarousel1.carousel.slide
+          / Carousel items
+          .carousel-inner
+            .active.item= image_tag "album/album1.jpg"
+            .item= image_tag "album/album2.jpg"
+            .item= image_tag "album/album3.jpg"
+            .item= image_tag "album/album4.jpg"
+            .item= image_tag "album/album5.jpg"
+            .item= image_tag "album/album6.jpg"
+            .item= image_tag "album/album7.jpg"
+            .item= image_tag "album/album8.jpg"
+            .item= image_tag "album/album9.jpg"
+            .item= image_tag "album/album10.jpg"
+          / Carousel nav
+          %a.carousel-control.left{"data-slide" => "prev", href: "#myCarousel1"} ‹
+          %a.carousel-control.right{"data-slide" => "next", href: "#myCarousel1"} ›
+      .modal-footer
+    #myModal2.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
+      .modal-header
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
+        %h4#myModalLabel Facebookアルバム
+      .modal-body
+        #myCarousel2.carousel.slide
+          / Carousel items
+          .carousel-inner
+            .item= image_tag "album/album1.jpg"
+            .active.item= image_tag "album/album2.jpg"
+            .item= image_tag "album/album3.jpg"
+            .item= image_tag "album/album4.jpg"
+            .item= image_tag "album/album5.jpg"
+            .item= image_tag "album/album6.jpg"
+            .item= image_tag "album/album7.jpg"
+            .item= image_tag "album/album8.jpg"
+            .item= image_tag "album/album9.jpg"
+            .item= image_tag "album/album10.jpg"
+          / Carousel nav
+          %a.carousel-control.left{"data-slide" => "prev", href: "#myCarousel2"} ‹
+          %a.carousel-control.right{"data-slide" => "next", href: "#myCarousel2"} ›
+      .modal-footer
+    #myModal3.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
+      .modal-header
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
+        %h4#myModalLabel Facebookアルバム
+      .modal-body
+        #myCarousel3.carousel.slide
+          / Carousel items
+          .carousel-inner
+            .item= image_tag "album/album1.jpg"
+            .item= image_tag "album/album2.jpg"
+            .active.item= image_tag "album/album3.jpg"
+            .item= image_tag "album/album4.jpg"
+            .item= image_tag "album/album5.jpg"
+            .item= image_tag "album/album6.jpg"
+            .item= image_tag "album/album7.jpg"
+            .item= image_tag "album/album8.jpg"
+            .item= image_tag "album/album9.jpg"
+            .item= image_tag "album/album10.jpg"
+          / Carousel nav
+          %a.carousel-control.left{"data-slide" => "prev", href: "#myCarousel3"} ‹
+          %a.carousel-control.right{"data-slide" => "next", href: "#myCarousel3"} ›
+      .modal-footer
+    #myModal4.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
+      .modal-header
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
+        %h4#myModalLabel Facebookアルバム
+      .modal-body
+        #myCarousel4.carousel.slide
+          / Carousel items
+          .carousel-inner
+            .item= image_tag "album/album1.jpg"
+            .item= image_tag "album/album2.jpg"
+            .item= image_tag "album/album3.jpg"
+            .active.item= image_tag "album/album4.jpg"
+            .item= image_tag "album/album5.jpg"
+            .item= image_tag "album/album6.jpg"
+            .item= image_tag "album/album7.jpg"
+            .item= image_tag "album/album8.jpg"
+            .item= image_tag "album/album9.jpg"
+            .item= image_tag "album/album10.jpg"
+          / Carousel nav
+          %a.carousel-control.left{"data-slide" => "prev", href: "#myCarousel4"} ‹
+          %a.carousel-control.right{"data-slide" => "next", href: "#myCarousel4"} ›
+      .modal-footer
+    #myModal5.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
+      .modal-header
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
+        %h4#myModalLabel Facebookアルバム
+      .modal-body
+        #myCarousel5.carousel.slide
+          / Carousel items
+          .carousel-inner
+            .item= image_tag "album/album1.jpg"
+            .item= image_tag "album/album2.jpg"
+            .item= image_tag "album/album3.jpg"
+            .item= image_tag "album/album4.jpg"
+            .active.item= image_tag "album/album5.jpg"
+            .item= image_tag "album/album6.jpg"
+            .item= image_tag "album/album7.jpg"
+            .item= image_tag "album/album8.jpg"
+            .item= image_tag "album/album9.jpg"
+            .item= image_tag "album/album10.jpg"
+          / Carousel nav
+          %a.carousel-control.left{"data-slide" => "prev", href: "#myCarousel5"} ‹
+          %a.carousel-control.right{"data-slide" => "next", href: "#myCarousel5"} ›
+      .modal-footer
+    #myModal6.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
+      .modal-header
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
+        %h4#myModalLabel Facebookアルバム
+      .modal-body
+        #myCarousel6.carousel.slide
+          / Carousel items
+          .carousel-inner
+            .item= image_tag "album/album1.jpg"
+            .item= image_tag "album/album2.jpg"
+            .item= image_tag "album/album3.jpg"
+            .item= image_tag "album/album4.jpg"
+            .item= image_tag "album/album5.jpg"
+            .active.item= image_tag "album/album6.jpg"
+            .item= image_tag "album/album7.jpg"
+            .item= image_tag "album/album8.jpg"
+            .item= image_tag "album/album9.jpg"
+            .item= image_tag "album/album10.jpg"
+          / Carousel nav
+          %a.carousel-control.left{"data-slide" => "prev", href: "#myCarousel6"} ‹
+          %a.carousel-control.right{"data-slide" => "next", href: "#myCarousel6"} ›
+      .modal-footer
+    #myModal7.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
+      .modal-header
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
+        %h4#myModalLabel Facebookアルバム
+      .modal-body
+        #myCarousel7.carousel.slide
+          / Carousel items
+          .carousel-inner
+            .item= image_tag "album/album1.jpg"
+            .item= image_tag "album/album2.jpg"
+            .item= image_tag "album/album3.jpg"
+            .item= image_tag "album/album4.jpg"
+            .item= image_tag "album/album5.jpg"
+            .item= image_tag "album/album6.jpg"
+            .active.item= image_tag "album/album7.jpg"
+            .item= image_tag "album/album8.jpg"
+            .item= image_tag "album/album9.jpg"
+            .item= image_tag "album/album10.jpg"
+          / Carousel nav
+          %a.carousel-control.left{"data-slide" => "prev", href: "#myCarousel7"} ‹
+          %a.carousel-control.right{"data-slide" => "next", href: "#myCarousel7"} ›
+      .modal-footer
+    #myModal8.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
+      .modal-header
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
+        %h4#myModalLabel Facebookアルバム
+      .modal-body
+        #myCarousel8.carousel.slide
+          / Carousel items
+          .carousel-inner
+            .item= image_tag "album/album1.jpg"
+            .item= image_tag "album/album2.jpg"
+            .item= image_tag "album/album3.jpg"
+            .item= image_tag "album/album4.jpg"
+            .item= image_tag "album/album5.jpg"
+            .item= image_tag "album/album6.jpg"
+            .item= image_tag "album/album7.jpg"
+            .active.item= image_tag "album/album8.jpg"
+            .item= image_tag "album/album9.jpg"
+            .item= image_tag "album/album10.jpg"
+          / Carousel nav
+          %a.carousel-control.left{"data-slide" => "prev", href: "#myCarousel8"} ‹
+          %a.carousel-control.right{"data-slide" => "next", href: "#myCarousel8"} ›
+      .modal-footer
+    #myModal9.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
+      .modal-header
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
+        %h4#myModalLabel Facebookアルバム
+      .modal-body
+        #myCarousel9.carousel.slide
+          / Carousel items
+          .carousel-inner
+            .item= image_tag "album/album1.jpg"
+            .item= image_tag "album/album2.jpg"
+            .item= image_tag "album/album3.jpg"
+            .item= image_tag "album/album4.jpg"
+            .item= image_tag "album/album5.jpg"
+            .item= image_tag "album/album6.jpg"
+            .item= image_tag "album/album7.jpg"
+            .item= image_tag "album/album8.jpg"
+            .active.item= image_tag "album/album9.jpg"
+            .item= image_tag "album/album10.jpg"
+          / Carousel nav
+          %a.carousel-control.left{"data-slide" => "prev", href: "#myCarousel9"} ‹
+          %a.carousel-control.right{"data-slide" => "next", href: "#myCarousel9"} ›
+      .modal-footer
+    #myModal10.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
+      .modal-header
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
+        %h4#myModalLabel Facebookアルバム
+      .modal-body
+        #myCarousel10.carousel.slide
+          / Carousel items
+          .carousel-inner
+            .item= image_tag "album/album1.jpg"
+            .item= image_tag "album/album2.jpg"
+            .item= image_tag "album/album3.jpg"
+            .item= image_tag "album/album4.jpg"
+            .item= image_tag "album/album5.jpg"
+            .item= image_tag "album/album6.jpg"
+            .item= image_tag "album/album7.jpg"
+            .item= image_tag "album/album8.jpg"
+            .item= image_tag "album/album9.jpg"
+            .active.item= image_tag "album/album10.jpg"
+          / Carousel nav
+          %a.carousel-control.left{"data-slide" => "prev", href: "#myCarousel10"} ‹
+          %a.carousel-control.right{"data-slide" => "next", href: "#myCarousel10"} ›
+      .modal-footer

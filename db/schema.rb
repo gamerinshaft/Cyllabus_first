@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 20131219233902) do
   create_table "blank_questions", force: true do |t|
     t.string   "title"
     t.text     "content"
+    t.string   "company_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -45,6 +46,7 @@ ActiveRecord::Schema.define(version: 20131219233902) do
   create_table "multiple_choice_questions", force: true do |t|
     t.string   "title"
     t.text     "content"
+    t.string   "company_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

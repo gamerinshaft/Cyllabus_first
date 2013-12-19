@@ -13,6 +13,11 @@ class CreateCompanies < ActiveRecord::Migration
       t.string :logo
       t.string :cover
       t.string :phone
+      t.float :latitude
+      t.float :longitude
+      t.string :address
+      t.text :description
+      t.string :title
 
       t.timestamps
     end

@@ -8,10 +8,10 @@
 
   .field
     = f.label :company_name
-    = f.text_field :company_name
+    = f.text_field :company_name, placeholder: '株式会社ダラフ'
   .field
     = f.label :homepage_url
-    = f.text_field :homepage_url
+    = f.text_field :homepage_url, placeholder: 'daraf.co.jp'
   .field
     = f.label :established_at
     = f.date_select :established_at
@@ -20,27 +20,27 @@
     = f.number_field :number_of_members
   .field
     = f.label :mail
-    = f.text_field :mail
+    = f.text_field :mail, placeholder: 'example@gmail.com'
   .field
     = f.label :twitter
-    = f.text_field :twitter
+    = f.text_field :twitter, placeholder: 'pipet_sc'
   .field
     = f.label :slideshare
-    = f.text_field :slideshare
+    = f.text_field :slideshare, placeholder: '12345678'
   .field
     = f.label :vine
-    = f.text_field :vine
+    = f.text_field :vine, placeholder: 'https://vine.co/v/a1b2c3d4f5'
   .field
     = f.label :youtube
-    = f.text_field :youtube
+    = f.text_field :youtube, placeholder: 'ZFFEA-5XxuE'
   .field
     = f.label :logo
-    = f.text_field :logo
+    = f.file_field :logo
   .field
     = f.label :cover
-    = f.text_field :cover
+    = f.file_field :cover
   .field
     = f.label :phone
-    = f.text_field :phone
+    = f.text_field :phone, placeholder: '090-5796-0675'
   .actions
     = f.submit 'Save'

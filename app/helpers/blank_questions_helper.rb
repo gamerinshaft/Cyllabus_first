@@ -1,0 +1,2 @@
+module BlankQuestionsHelper
+end

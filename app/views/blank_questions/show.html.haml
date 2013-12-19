@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Title:
+  = @blank_question.title
+%p
+  %b Content:
+  = @blank_question.content
+
+= link_to 'Edit', edit_blank_question_path(@blank_question)
+\|
+= link_to 'Back', blank_questions_path

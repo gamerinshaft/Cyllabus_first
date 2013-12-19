@@ -1,0 +1,21 @@
+%h1 Listing blank_questions
+
+%table
+  %tr
+    %th Title
+    %th Content
+    %th
+    %th
+    %th
+
+  - @blank_questions.each do |blank_question|
+    %tr
+      %td= blank_question.title
+      %td= blank_question.content
+      %td= link_to 'Show', blank_question
+      %td= link_to 'Edit', edit_blank_question_path(blank_question)
+      %td= link_to 'Destroy', blank_question, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Blank question', new_blank_question_path

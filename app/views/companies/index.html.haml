@@ -1,0 +1,41 @@
+%h1 Listing companies
+
+%table
+  %tr
+    %th Company name
+    %th Homepage url
+    %th Established at
+    %th Number of members
+    %th Mail
+    %th Twitter
+    %th Slideshare
+    %th Vine
+    %th Youtube
+    %th Logo
+    %th Cover
+    %th Phone
+    %th
+    %th
+    %th
+
+  - @companies.each do |company|
+    %tr
+      %td= company.company_name
+      %td= company.homepage_url
+      %td= company.established_at
+      %td= company.number_of_members
+      %td= company.mail
+      %td= company.twitter
+      %td= company.slideshare
+      %td= company.vine
+      %td= company.youtube
+      %td= company.logo
+      %td= company.cover
+      %td= company.phone
+      %td= link_to 'Show', company
+      %td= link_to 'Edit', edit_company_path(company)
+      %td= link_to 'Destroy', company, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Company', new_company_path

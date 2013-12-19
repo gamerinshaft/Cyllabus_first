@@ -1,0 +1,42 @@
+%p#notice= notice
+
+%p
+  %b Company name:
+  = @company.company_name
+%p
+  %b Homepage url:
+  = @company.homepage_url
+%p
+  %b Established at:
+  = @company.established_at
+%p
+  %b Number of members:
+  = @company.number_of_members
+%p
+  %b Mail:
+  = @company.mail
+%p
+  %b Twitter:
+  = @company.twitter
+%p
+  %b Slideshare:
+  = @company.slideshare
+%p
+  %b Vine:
+  = @company.vine
+%p
+  %b Youtube:
+  = @company.youtube
+%p
+  %b Logo:
+  = @company.logo
+%p
+  %b Cover:
+  = @company.cover
+%p
+  %b Phone:
+  = @company.phone
+
+= link_to 'Edit', edit_company_path(@company)
+\|
+= link_to 'Back', companies_path

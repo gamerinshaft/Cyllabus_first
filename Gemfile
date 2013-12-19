@@ -43,3 +43,11 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+# User Add
+gem 'sqlite3'
+gem 'haml-rails'
+gem 'carrierwave'
+gem 'gmaps4rails'
+gem 'font-awesome-rails', '~> 3.2.1'
+gem 'bootstrap-sass', '~> 2.3.1'

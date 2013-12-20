@@ -4,31 +4,36 @@ class MultipleChoiceQuestionsController < ApplicationController
   # GET /multiple_choice_questions
   # GET /multiple_choice_questions.json
   def index
+    @company = Company.find(params[:company_id])
     @multiple_choice_questions = MultipleChoiceQuestion.all
   end
 
   # GET /multiple_choice_questions/1
   # GET /multiple_choice_questions/1.json
   def show
+    @company = Company.find(params[:company_id])
   end
 
   # GET /multiple_choice_questions/new
   def new
+    @company = Company.find(params[:company_id])
     @multiple_choice_question = MultipleChoiceQuestion.new
   end
 
   # GET /multiple_choice_questions/1/edit
   def edit
+    @company = Company.find(params[:company_id])
   end
 
   # POST /multiple_choice_questions
   # POST /multiple_choice_questions.json
   def create
-    @multiple_choice_question = MultipleChoiceQuestion.new(multiple_choice_question_params)
+    @company = Company.find(params[:company_id])
+    @multiple_choice_question = @company.multiple_choice_questions.build(multiple_choice_question_params)
 
     respond_to do |format|
       if @multiple_choice_question.save
-        format.html { redirect_to @multiple_choice_question, notice: 'Multiple choice question was successfully created.' }
+        format.html { redirect_to company_multiple_choice_question_path(@company, @multiple_choice_question), notice: 'Multiple choice question was successfully created.' }
         format.json { render action: 'show', status: :created, location: @multiple_choice_question }
       else
         format.html { render action: 'new' }
@@ -56,7 +61,7 @@ class MultipleChoiceQuestionsController < ApplicationController
   def destroy
     @multiple_choice_question.destroy
     respond_to do |format|
-      format.html { redirect_to multiple_choice_questions_url }
+      format.html { redirect_to company_multiple_choice_questions_path }
       format.json { head :no_content }
     end
   end

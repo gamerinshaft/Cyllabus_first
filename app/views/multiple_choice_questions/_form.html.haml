@@ -1,4 +1,4 @@
-= form_for @multiple_choice_question do |f|
+= form_for [@company, @company.multiple_choice_questions.build] do |f|
   - if @multiple_choice_question.errors.any?
     #error_explanation
       %h2= "#{pluralize(@multiple_choice_question.errors.count, "error")} prohibited this multiple_choice_question from being saved:"

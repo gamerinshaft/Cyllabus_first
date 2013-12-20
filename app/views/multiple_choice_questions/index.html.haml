@@ -8,14 +8,14 @@
     %th
     %th
 
-  - @multiple_choice_questions.each do |multiple_choice_question|
+  - @company.multiple_choice_questions.each do |multiple_choice_question|
     %tr
       %td= multiple_choice_question.title
       %td= multiple_choice_question.content
-      %td= link_to 'Show', multiple_choice_question
-      %td= link_to 'Edit', edit_multiple_choice_question_path(multiple_choice_question)
-      %td= link_to 'Destroy', multiple_choice_question, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %td= link_to 'Show', company_multiple_choice_question_path(@company, multiple_choice_question)
+      %td= link_to 'Edit', edit_company_multiple_choice_question_path(@company, multiple_choice_question)
+      %td= link_to 'Destroy', company_multiple_choice_question_path(@company, multiple_choice_question), :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 
-= link_to 'New Multiple choice question', new_multiple_choice_question_path
+= link_to 'New Multiple choice question', new_company_multiple_choice_question_path

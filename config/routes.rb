@@ -1,5 +1,8 @@
 Cyllabus::Application.routes.draw do
   resources :companies do
+    member do
+      get 'questions'
+    end
     resources :blank_questions
     resources :multiple_choice_questions
   end

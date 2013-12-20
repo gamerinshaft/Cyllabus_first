@@ -61,7 +61,7 @@
               %p= @company.number_of_members
             .contact-icon
               %a
-                = image_tag "nophone.png"
+                = image_tag "phone.png"
               %a#contact-tool{"data-original-title" => @company.mail, "data-placement" => "top", "data-toggle" => "tooltip", href: "mailto:#{@company.mail}", rel: "tooltip"}
                 = image_tag "mail.png"
               %a#contact-tool{"data-original-title" => "/cyllabus", "data-placement" => "top", "data-toggle" => "tooltip", href: "https://facebook.com/cyllabus", rel: "tooltip", target: "_blank"}

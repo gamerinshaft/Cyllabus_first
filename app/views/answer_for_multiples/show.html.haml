@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Check:
+  = @answer_for_multiple.check
+%p
+  %b Content:
+  = @answer_for_multiple.content
+
+= link_to 'Edit', edit_answer_for_multiple_path(@answer_for_multiple)
+\|
+= link_to 'Back', answer_for_multiples_path

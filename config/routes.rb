@@ -1,6 +1,8 @@
 Cyllabus::Application.routes.draw do
 
 
+  resources :answer_for_multiples
+
   resources :companies do
     resources :multiple_choice_questions
   end

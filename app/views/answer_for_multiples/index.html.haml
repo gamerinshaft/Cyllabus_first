@@ -1,0 +1,21 @@
+%h1 Listing answer_for_multiples
+
+%table
+  %tr
+    %th Check
+    %th Content
+    %th
+    %th
+    %th
+
+  - @answer_for_multiples.each do |answer_for_multiple|
+    %tr
+      %td= answer_for_multiple.check
+      %td= answer_for_multiple.content
+      %td= link_to 'Show', answer_for_multiple
+      %td= link_to 'Edit', edit_answer_for_multiple_path(answer_for_multiple)
+      %td= link_to 'Destroy', answer_for_multiple, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Answer for multiple', new_answer_for_multiple_path

@@ -6,9 +6,26 @@
 %p
   %b Content:
   = @multiple_choice_question.content
+%table
+  - @multiple_choice_question.answer_for_multiples.each do |answer|
+    %tr
+      - if answer.check
+        %td
+          %a{href: "#", onclick: "alert('あたり')"}= answer.text
+      - else
+        %td
+          %a{href: "#", onclick: "alert('はずれ')"}= answer.text
 
+= render 'answer_for_multiples/form'
 = link_to 'Edit', edit_company_multiple_choice_question_path(@company, @multiple_choice_question)
 \|
 
-= render 'answer_for_multiples/form'
 = link_to 'Back', company_multiple_choice_questions_path
+
+
+
+
+
+
+
+

@@ -1,10 +1,10 @@
 Cyllabus::Application.routes.draw do
   resources :companies do
-    resources :multiple_choice_questions
+    resources :multiple_choice_questions do
+      resources :answer_for_multiples
+    end
   end
-  resources :multiple_choice_questions do
-    resources :answer_for_multiples
-  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

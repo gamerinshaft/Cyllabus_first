@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 20131220085522) do
     t.boolean  "check"
     t.text     "content"
     t.string   "multiple_choice_question_id"
+    t.string   "company_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

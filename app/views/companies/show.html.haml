@@ -28,6 +28,9 @@
               %a{href: ""}
                 %i.icon-list>
                 シラバス一覧
+              %a{href: "#{@company.id}/questions"}
+                %i.icon-tags
+                問題を作成する
               %a{href: "#{@company.id}/edit"}
                 %i.icon-pencil>
                 編集する
@@ -55,7 +58,7 @@
               .name
                 %p.bold= @company.company_name
                 %p.url
-                  %a{href: "http://#{@company.homepage_url}", target: "_blank"} http://daraf.co.jp
+                  =render 'homepage'
             .establishment
               %p.bold 設立日
               %p= @company.established_at

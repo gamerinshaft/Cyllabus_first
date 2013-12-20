@@ -26,10 +26,11 @@ class AnswerForMultiplesController < ApplicationController
   def create
     @multiple_choice_question = MultipleChoiceQuestion.find(params[:multiple_choice_question_id])
     @answer_for_multiple = AnswerForMultiple.new(answer_for_multiple_params)
+    @company = Company.find(params[:company_id])
 
     respond_to do |format|
       if @answer_for_multiple.save
-        format.html { redirect_to multiple_choice_question_path(@multiple_choice_question), notice: 'Answer for multiple was successfully created.' }
+        format.html { redirect_to company_multiple_choice_question_path(@company, @multiple_choice_question), notice: 'Answer for multiple was successfully created.' }
         format.json { render action: 'show', status: :created, location: @answer_for_multiple }
       else
         format.html { render action: 'new' }

@@ -38,15 +38,7 @@ ActiveRecord::Schema.define(version: 20131220072439) do
   create_table "multiple_choice_questions", force: true do |t|
     t.string   "title"
     t.text     "content"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "questions", force: true do |t|
-    t.string   "title"
-    t.text     "content"
-    t.string   "select"
-    t.integer  "company_id"
+    t.string   "company_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

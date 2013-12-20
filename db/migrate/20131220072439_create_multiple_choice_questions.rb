@@ -3,7 +3,7 @@ class CreateMultipleChoiceQuestions < ActiveRecord::Migration
     create_table :multiple_choice_questions do |t|
       t.string :title
       t.text :content
-
+      t.string :company_id
       t.timestamps
     end
   end

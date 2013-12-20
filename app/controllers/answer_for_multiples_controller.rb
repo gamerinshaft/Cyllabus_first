@@ -19,6 +19,10 @@ class AnswerForMultiplesController < ApplicationController
 
   # GET /answer_for_multiples/1/edit
   def edit
+    @multiple_choice_question = MultipleChoiceQuestion.find(params[:multiple_choice_question_id])
+    @company = Company.find(params[:company_id])
+    @answer_for_multiple = @multiple_choice_question.answer_for_multiples.find(params[:id])
+
   end
 
   # POST /answer_for_multiples

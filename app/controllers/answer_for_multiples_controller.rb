@@ -24,11 +24,12 @@ class AnswerForMultiplesController < ApplicationController
   # POST /answer_for_multiples
   # POST /answer_for_multiples.json
   def create
+    @multiple_choice_question = MultipleChoiceQuestion.find(params[:multiple_choice_question_id])
     @answer_for_multiple = AnswerForMultiple.new(answer_for_multiple_params)
 
     respond_to do |format|
       if @answer_for_multiple.save
-        format.html { redirect_to @answer_for_multiple, notice: 'Answer for multiple was successfully created.' }
+        format.html { redirect_to multiple_choice_question_path(@multiple_choice_question), notice: 'Answer for multiple was successfully created.' }
         format.json { render action: 'show', status: :created, location: @answer_for_multiple }
       else
         format.html { render action: 'new' }

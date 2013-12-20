@@ -1,4 +1,4 @@
 class MultipleChoiceQuestion < ActiveRecord::Base
 	belongs_to :company
-	has_many :answr_for_maltiples
+	has_many :answer_for_multiples
 end

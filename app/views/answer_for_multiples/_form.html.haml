@@ -1,11 +1,4 @@
-= form_for @answer_for_multiple do |f|
-  - if @answer_for_multiple.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@answer_for_multiple.errors.count, "error")} prohibited this answer_for_multiple from being saved:"
-      %ul
-        - @answer_for_multiple.errors.full_messages.each do |msg|
-          %li= msg
-
+= form_for [@multiple_choice_question, @multiple_choice_question.answer_for_multiples.build] do |f|
   .field
     = f.label :check
     = f.check_box :check

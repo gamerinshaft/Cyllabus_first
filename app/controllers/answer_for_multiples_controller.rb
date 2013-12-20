@@ -25,7 +25,7 @@ class AnswerForMultiplesController < ApplicationController
   # POST /answer_for_multiples.json
   def create
     @multiple_choice_question = MultipleChoiceQuestion.find(params[:multiple_choice_question_id])
-    @answer_for_multiple = AnswerForMultiple.new(answer_for_multiple_params)
+    @answer_for_multiple = @multiple_choice_question.answer_for_multiples.build(answer_for_multiple_params)
     @company = Company.find(params[:company_id])
 
     respond_to do |format|

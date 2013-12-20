@@ -12,7 +12,9 @@ class MultipleChoiceQuestionsController < ApplicationController
   # GET /multiple_choice_questions/1.json
   def show
     @company = Company.find(params[:company_id])
-    @answer_for_multiple = AnswerForMultiple.new
+    @multiple_choice_question = MultipleChoiceQuestion.find(params[:id])
+    @answer_for_multiple = @multiple_choice_question.answer_for_multiples.build
+
   end
 
   # GET /multiple_choice_questions/new

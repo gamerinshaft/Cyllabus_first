@@ -11,10 +11,11 @@
     %tr
       - if answer.check
         %td
-          %a{href: "#", onclick: "alert('あたり')"}= @company.answer.text
+          %a{href: "#", onclick: "alert('あたり')"}
+            = answer.content
       - else
         %td
-          %a{href: "#", onclick: "alert('はずれ')"}= @company.answer.text
+          %a{href: "#", onclick: "alert('はずれ')"}= answer.content
 = render 'answer_for_multiples/form'
 = link_to 'Edit', edit_company_multiple_choice_question_path(@company, @multiple_choice_question)
 \|
